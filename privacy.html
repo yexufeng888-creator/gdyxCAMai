@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隐私政策 · Campus Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--white:#f5f5f7;--blue:#0071e3;--blue-light:#2997ff;--purple:#bf5af2;--teal:#32d74b;--glass:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:#000;color:var(--white);font-family:'Noto Sans SC',-apple-system,sans-serif;overflow-x:hidden;line-height:1.7;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:999;height:52px;background:rgba(0,0,0,0.82);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 28px;}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(135deg,#fff 0%,#a0c4ff 60%,#bf5af2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+  .nav-back{font-size:13px;color:var(--blue-light);text-decoration:none;}
+  .nav-back:hover{opacity:.7;}
+  .hero{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 60px;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(191,90,242,0.18) 0%,rgba(41,151,255,0.10) 40%,transparent 70%);}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;animation:drift 14s ease-in-out infinite alternate;}
+  .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(191,90,242,0.4) 0%,transparent 70%);top:-100px;left:-100px;}
+  .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(41,151,255,0.35) 0%,transparent 70%);bottom:0;right:-50px;animation-delay:-5s;}
+  @keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(30px,-40px) scale(1.08);}}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(48px,7vw,84px);font-weight:700;line-height:1.1;letter-spacing:-2px;background:linear-gradient(160deg,#ffffff 0%,#e0c4ff 50%,#bf5af2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative;z-index:1;}
+  .hero-sub{font-size:18px;color:rgba(255,255,255,0.6);margin-top:20px;font-weight:300;position:relative;z-index:1;}
+  .hero-meta{margin-top:24px;font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:2px;position:relative;z-index:1;}
+  main{max-width:840px;margin:0 auto;padding:60px 24px 120px;}
+  .toc{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px 32px;margin-bottom:60px;backdrop-filter:blur(12px);}
+  .toc h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;margin-bottom:16px;}
+  .toc ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;counter-reset:item;}
+  .toc li{counter-increment:item;font-size:13px;}
+  .toc li::before{content:counter(item,decimal-leading-zero) " ";color:var(--blue-light);font-family:'Playfair Display',serif;margin-right:8px;}
+  .toc a{color:rgba(255,255,255,0.65);text-decoration:none;transition:color .2s;}
+  .toc a:hover{color:#fff;}
+  section.policy{margin-bottom:48px;scroll-margin-top:80px;}
+  section.policy h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff;margin-bottom:18px;letter-spacing:-0.5px;display:flex;align-items:baseline;gap:14px;}
+  section.policy h2 .num{font-size:14px;color:var(--blue-light);letter-spacing:3px;}
+  section.policy p{font-size:15px;color:rgba(255,255,255,0.7);font-weight:300;margin-bottom:14px;}
+  section.policy ul{list-style:none;margin:14px 0 14px 0;}
+  section.policy ul li{font-size:14px;color:rgba(255,255,255,0.65);font-weight:300;padding:8px 0 8px 24px;position:relative;}
+  section.policy ul li::before{content:"";position:absolute;left:0;top:16px;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--blue-light),var(--purple));box-shadow:0 0 8px rgba(41,151,255,0.5);}
+  section.policy strong{color:#fff;font-weight:500;}
+  .callout{background:linear-gradient(135deg,rgba(41,151,255,0.08),rgba(191,90,242,0.08));border:1px solid rgba(41,151,255,0.2);border-radius:16px;padding:20px 24px;margin:20px 0;}
+  .callout-title{font-size:13px;color:var(--blue-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .callout-body{font-size:14px;color:rgba(255,255,255,0.75);font-weight:300;}
+  .contact-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;margin-top:60px;text-align:center;}
+  .contact-card h3{font-family:'Playfair Display',serif;font-size:24px;color:#fff;margin-bottom:12px;}
+  .contact-card p{font-size:14px;color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:6px;}
+  footer{background:#000;border-top:1px solid rgba(255,255,255,0.08);padding:40px 24px;text-align:center;}
+  footer p{font-size:12px;color:rgba(255,255,255,0.25);}
+  @media(max-width:640px){.toc ol{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index (1).html" class="nav-logo">Campus Intelligence</a>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <span data-ci-auth></span>
+    <a href="index (1).html" class="nav-back">← 返回主页</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <h1 class="hero-title">隐私政策</h1>
+  <p class="hero-sub">Privacy Policy · 我们如何对待你的数据</p>
+  <div class="hero-meta">最后更新：2026 年 5 月 27 日 · 生效日期：2026 年 5 月 27 日</div>
+</section>
+
+<main>
+  <div class="toc">
+    <h3>目录 · Contents</h3>
+    <ol>
+      <li><a href="#s1">引言与适用范围</a></li>
+      <li><a href="#s2">我们收集的信息</a></li>
+      <li><a href="#s3">信息的使用方式</a></li>
+      <li><a href="#s4">信息的存储与保护</a></li>
+      <li><a href="#s5">信息共享与披露</a></li>
+      <li><a href="#s6">你的权利</a></li>
+      <li><a href="#s7">Cookie 与同类技术</a></li>
+      <li><a href="#s8">未成年人保护</a></li>
+      <li><a href="#s9">第三方服务</a></li>
+      <li><a href="#s10">政策更新</a></li>
+      <li><a href="#s11">联系我们</a></li>
+    </ol>
+  </div>
+
+  <section class="policy" id="s1">
+    <h2><span class="num">01</span>引言与适用范围</h2>
+    <p>欢迎使用 Campus Intelligence（以下简称"本平台"或"我们"）。本平台是面向大连工业大学艺术与信息工程学院师生的校园智能服务，由 ChatGPT 提供核心 AI 能力支持。我们高度重视用户的隐私权，本《隐私政策》旨在以清晰、透明的方式说明我们在你使用本平台时如何收集、使用、存储与保护你的个人信息。</p>
+    <p>本政策适用于你通过 Web、移动端或其他方式访问本平台所产生的所有交互。请你在使用本平台前认真阅读并充分理解本政策的全部内容。</p>
+  </section>
+
+  <section class="policy" id="s2">
+    <h2><span class="num">02</span>我们收集的信息</h2>
+    <p>为了向你提供更优质的校园智能服务，我们可能会收集以下类型的信息：</p>
+    <ul>
+      <li><strong>账号信息：</strong>学号、姓名、所属学院、年级、专业等校园身份信息（仅在你主动登录绑定时获取）。</li>
+      <li><strong>对话内容：</strong>你与 AI 助手交互时输入的文字、提交的文档片段、生成结果反馈等。</li>
+      <li><strong>设备与日志信息：</strong>设备型号、操作系统版本、浏览器类型、IP 地址、访问时间、使用时长等技术日志。</li>
+      <li><strong>偏好设置：</strong>主题、语言、订阅的学习提醒类型等个性化配置。</li>
+      <li><strong>学习数据（可选）：</strong>在你授权后，从教务系统同步的课表、成绩单、学习进度等。</li>
+    </ul>
+    <div class="callout">
+      <div class="callout-title">最小必要原则</div>
+      <div class="callout-body">我们仅收集为实现服务所必需的最少信息，不会主动收集生物特征、健康、宗教信仰等敏感个人信息。</div>
+    </div>
+  </section>
+
+  <section class="policy" id="s3">
+    <h2><span class="num">03</span>信息的使用方式</h2>
+    <p>我们使用所收集的信息以实现下列目的：</p>
+    <ul>
+      <li>向你提供 AI 对话、写作辅助、代码调试、学习规划等核心功能；</li>
+      <li>根据你的学习行为提供个性化推荐与定制化学习路径；</li>
+      <li>检测并防范滥用、欺诈、安全攻击等风险；</li>
+      <li>对服务质量、稳定性与功能进行统计分析与持续改进；</li>
+      <li>在获得你单独同意的前提下，向你推送学院通知、学术活动、奖学金等校园资讯。</li>
+    </ul>
+  </section>
+
+  <section class="policy" id="s4">
+    <h2><span class="num">04</span>信息的存储与保护</h2>
+    <p>我们采用业界通行的安全措施保护你的个人信息：</p>
+    <ul>
+      <li><strong>传输加密：</strong>全站使用 HTTPS（TLS 1.3）加密传输，防止中间人攻击。</li>
+      <li><strong>存储加密：</strong>对话内容与敏感字段在数据库中进行 AES-256 加密存储。</li>
+      <li><strong>访问控制：</strong>仅经授权的运维人员可在审计监督下访问数据，且全程留痕。</li>
+      <li><strong>本地优先：</strong>非必要不上传，部分草稿与个性化偏好优先保存在本地设备。</li>
+      <li><strong>存储期限：</strong>对话记录默认保留 12 个月，超期后自动匿名化或删除；账号注销后 30 日内完成全部数据清理。</li>
+    </ul>
+  </section>
+
+  <section class="policy" id="s5">
+    <h2><span class="num">05</span>信息共享与披露</h2>
+    <p>我们承诺<strong>不会出售、出租或以任何商业目的向第三方提供你的个人信息</strong>。仅在以下情形下可能进行有限共享：</p>
+    <ul>
+      <li>已事先获得你的明示同意；</li>
+      <li>为实现 AI 对话功能，必要的请求会经脱敏处理后转发至 ChatGPT 服务接口；</li>
+      <li>根据法律法规、司法机关或行政机关的合法要求；</li>
+      <li>为保护本平台、用户或公众的合法权益、人身与财产安全所必需。</li>
+    </ul>
+  </section>
+
+  <section class="policy" id="s6">
+    <h2><span class="num">06</span>你的权利</h2>
+    <p>关于你的个人信息，你享有以下权利，可随时通过本平台"账号设置"或文末联系方式行使：</p>
+    <ul>
+      <li><strong>访问权：</strong>查看我们持有的关于你的个人信息副本；</li>
+      <li><strong>更正权：</strong>对不准确或不完整的信息进行修改；</li>
+      <li><strong>删除权：</strong>请求删除特定对话记录或全部账号数据；</li>
+      <li><strong>撤回同意：</strong>对已授权的处理活动随时撤回同意；</li>
+      <li><strong>注销账号：</strong>申请注销并彻底退出本平台。</li>
+    </ul>
+  </section>
+
+  <section class="policy" id="s7">
+    <h2><span class="num">07</span>Cookie 与同类技术</h2>
+    <p>我们使用 Cookie、LocalStorage 等技术记录登录状态、保存偏好、统计访问量。你可以通过浏览器设置拒绝或清除 Cookie，但这可能影响部分功能（如保持登录、记住主题）的正常使用。我们不使用 Cookie 进行跨站广告追踪。</p>
+  </section>
+
+  <section class="policy" id="s8">
+    <h2><span class="num">08</span>未成年人保护</h2>
+    <p>本平台主要面向高校在校生使用。若你为未满 14 周岁的未成年人，请在监护人陪同下阅读本政策并仅在监护人同意后使用相关功能。我们不会主动收集未成年人的额外个人信息，并对涉及未成年人的数据采取更严格的保护措施。</p>
+  </section>
+
+  <section class="policy" id="s9">
+    <h2><span class="num">09</span>第三方服务</h2>
+    <p>本平台为提供完整体验，可能链接或集成以下第三方服务：</p>
+    <ul>
+      <li><strong>OpenAI ChatGPT：</strong>提供对话生成能力，遵循 OpenAI 隐私政策；</li>
+      <li><strong>学院教务系统：</strong>用户主动授权后用于课表与成绩同步；</li>
+      <li><strong>学术数据库：</strong>知网、万方等检索接口，仅传递查询关键词。</li>
+    </ul>
+    <p>当你点击跳转至第三方网站后，其数据处理行为将适用其各自的隐私政策，请你单独审阅。</p>
+  </section>
+
+  <section class="policy" id="s10">
+    <h2><span class="num">10</span>政策更新</h2>
+    <p>我们可能会根据法律法规变化或服务调整对本政策进行修订。重大变更将通过站内公告、邮件或登录提示等显著方式通知你。继续使用本平台即视为接受更新后的政策。建议你定期回访本页面以了解最新内容。</p>
+  </section>
+
+  <section class="policy" id="s11">
+    <h2><span class="num">11</span>联系我们</h2>
+    <p>若你对本隐私政策或个人信息处理有任何疑问、意见或投诉，欢迎通过以下方式联系 Campus Intelligence 隐私团队：</p>
+    <div class="contact-card">
+      <h3>Campus Intelligence 隐私团队</h3>
+      <p>大连工业大学艺术与信息工程学院</p>
+      <p>邮箱：privacy@campus-intelligence.edu.cn</p>
+      <p>地址：辽宁省大连市庄河市学院路 1 号</p>
+      <p style="margin-top:14px;color:rgba(255,255,255,0.35);font-size:12px;">我们将在 15 个工作日内回复你的请求</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Copyright © 2026 大连工业大学艺术与信息工程学院 · Campus Intelligence. 保留所有权利。</p>
+</footer>
+<script src="ci-widget.js" defer></script>
+</body>
+</html>

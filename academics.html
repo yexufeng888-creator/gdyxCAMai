@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学术活动 · Campus Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--white:#f5f5f7;--blue:#0071e3;--blue-light:#2997ff;--purple:#bf5af2;--teal:#32d74b;--orange:#ff9f0a;--pink:#ff375f;--cyan:#64d2ff;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:#000;color:var(--white);font-family:'Noto Sans SC',-apple-system,sans-serif;overflow-x:hidden;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:999;height:52px;background:rgba(0,0,0,0.82);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 28px;}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(135deg,#fff 0%,#a0c4ff 60%,#bf5af2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:300;transition:color .2s;}
+  .nav-links a:hover{color:#fff;}
+  .nav-back{font-size:13px;color:var(--blue-light);text-decoration:none;}
+
+  /* HERO */
+  .hero{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 80px;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 50% at 50% 30%,rgba(50,215,75,0.18) 0%,rgba(41,151,255,0.10) 40%,transparent 70%);}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;animation:drift 14s ease-in-out infinite alternate;}
+  .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(50,215,75,0.35) 0%,transparent 70%);top:-100px;left:-100px;}
+  .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(41,151,255,0.4) 0%,transparent 70%);bottom:0;right:-50px;animation-delay:-5s;}
+  .orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(191,90,242,0.3) 0%,transparent 70%);top:40%;left:60%;animation-delay:-9s;}
+  @keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(30px,-40px) scale(1.08);}}
+
+  /* 3D ROTATING BADGE */
+  .badge-3d{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(12px);border-radius:999px;padding:6px 16px;font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:32px;position:relative;z-index:1;}
+  .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.6;transform:scale(1.3);}}
+  .hero-eyebrow{font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--blue-light);font-weight:300;margin-bottom:20px;position:relative;z-index:1;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(52px,9vw,110px);font-weight:700;line-height:1.0;letter-spacing:-2px;background:linear-gradient(160deg,#ffffff 0%,#c4ffd5 45%,#64d2ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative;z-index:1;}
+  .hero-sub{font-size:clamp(16px,2.2vw,20px);font-weight:300;color:rgba(255,255,255,0.65);margin-top:24px;max-width:680px;line-height:1.7;position:relative;z-index:1;}
+
+  /* FILTER PILLS */
+  .filter-bar{display:flex;justify-content:center;gap:10px;margin-top:40px;flex-wrap:wrap;position:relative;z-index:1;}
+  .pill{padding:8px 22px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);font-size:13px;cursor:pointer;font-family:inherit;transition:all .25s;}
+  .pill.active,.pill:hover{background:rgba(41,151,255,0.15);border-color:var(--blue-light);color:var(--blue-light);}
+
+  /* SECTION COMMON */
+  section{padding:100px 24px;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-label{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--blue-light);font-weight:400;margin-bottom:16px;}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);font-weight:700;line-height:1.1;letter-spacing:-1px;color:#fff;margin-bottom:14px;}
+  .section-title span{background:linear-gradient(120deg,#2997ff,#bf5af2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .section-desc{font-size:17px;font-weight:300;color:rgba(255,255,255,0.55);max-width:640px;line-height:1.7;margin-bottom:60px;}
+
+  /* FEATURED EVENT */
+  .featured{background:linear-gradient(180deg,#000,#080812);}
+  .featured-card{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:28px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);transform-style:preserve-3d;perspective:1200px;}
+  .featured-visual{aspect-ratio:4/3;background:linear-gradient(135deg,#0a1638 0%,#1a0a3d 60%,#3a0a30 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .featured-visual::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 30% 30%,rgba(41,151,255,0.4),transparent 50%),radial-gradient(circle at 70% 70%,rgba(191,90,242,0.4),transparent 50%);}
+  .floating-cubes{position:absolute;inset:0;perspective:800px;}
+  .cube{position:absolute;width:60px;height:60px;transform-style:preserve-3d;animation:rotate-cube 18s linear infinite;}
+  .cube:nth-child(1){top:20%;left:15%;animation-delay:0s;}
+  .cube:nth-child(2){top:60%;left:30%;animation-delay:-5s;width:40px;height:40px;}
+  .cube:nth-child(3){top:30%;right:20%;animation-delay:-10s;width:50px;height:50px;}
+  .cube:nth-child(4){bottom:20%;right:30%;animation-delay:-3s;width:35px;height:35px;}
+  .cube .face{position:absolute;width:100%;height:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);backdrop-filter:blur(8px);}
+  .cube .face.f{transform:translateZ(30px);}
+  .cube .face.b{transform:rotateY(180deg) translateZ(30px);}
+  .cube .face.r{transform:rotateY(90deg) translateZ(30px);}
+  .cube .face.l{transform:rotateY(-90deg) translateZ(30px);}
+  .cube .face.t{transform:rotateX(90deg) translateZ(30px);}
+  .cube .face.bt{transform:rotateX(-90deg) translateZ(30px);}
+  .cube:nth-child(2) .face,.cube:nth-child(4) .face{transform-origin:center;}
+  .cube:nth-child(2) .face.f{transform:translateZ(20px);}
+  .cube:nth-child(2) .face.b{transform:rotateY(180deg) translateZ(20px);}
+  .cube:nth-child(2) .face.r{transform:rotateY(90deg) translateZ(20px);}
+  .cube:nth-child(2) .face.l{transform:rotateY(-90deg) translateZ(20px);}
+  .cube:nth-child(2) .face.t{transform:rotateX(90deg) translateZ(20px);}
+  .cube:nth-child(2) .face.bt{transform:rotateX(-90deg) translateZ(20px);}
+  @keyframes rotate-cube{0%{transform:rotateX(0) rotateY(0);}100%{transform:rotateX(360deg) rotateY(360deg);}}
+  .featured-emblem{position:relative;font-family:'Playfair Display',serif;font-size:90px;font-weight:700;color:#fff;text-shadow:0 0 40px rgba(41,151,255,0.6);z-index:2;line-height:1;text-align:center;}
+  .featured-emblem .label{display:block;font-size:14px;letter-spacing:8px;color:rgba(255,255,255,0.6);margin-top:14px;font-weight:300;}
+  .featured-body{padding:48px 44px;display:flex;flex-direction:column;justify-content:center;}
+  .featured-meta{display:flex;gap:16px;margin-bottom:18px;flex-wrap:wrap;}
+  .meta-chip{font-size:11px;padding:5px 12px;border-radius:999px;background:rgba(255,159,10,0.12);border:1px solid rgba(255,159,10,0.3);color:var(--orange);letter-spacing:1px;}
+  .meta-chip.live{background:rgba(255,55,95,0.12);border-color:rgba(255,55,95,0.3);color:var(--pink);}
+  .featured-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:#fff;letter-spacing:-0.5px;line-height:1.2;margin-bottom:14px;}
+  .featured-desc{font-size:15px;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.7;margin-bottom:24px;}
+  .featured-info{display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:28px;}
+  .featured-info span{display:inline-flex;gap:8px;align-items:center;}
+  .featured-info b{color:#fff;font-weight:500;margin-right:4px;}
+  .btn{padding:13px 28px;border-radius:999px;font-size:14px;text-decoration:none;cursor:pointer;border:none;font-family:inherit;display:inline-block;transition:all .25s;}
+  .btn-primary{background:var(--blue);color:#fff;}
+  .btn-primary:hover{background:#0077ed;transform:scale(1.02);}
+
+  /* EVENT GRID */
+  .events{background:#000;}
+  .event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;}
+  .event{position:relative;background:linear-gradient(160deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;backdrop-filter:blur(10px);transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .3s;cursor:pointer;overflow:hidden;}
+  .event::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--g1,rgba(41,151,255,0.1)),transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none;}
+  .event:hover{transform:translateY(-6px) rotateX(2deg);border-color:rgba(255,255,255,0.18);}
+  .event:hover::before{opacity:1;}
+  .event-date{display:inline-flex;flex-direction:column;background:linear-gradient(135deg,var(--g1,#2997ff),var(--g2,#bf5af2));border-radius:12px;padding:10px 14px;color:#fff;font-family:'Playfair Display',serif;line-height:1;margin-bottom:18px;box-shadow:0 8px 24px rgba(41,151,255,0.25);}
+  .event-date .day{font-size:24px;font-weight:700;}
+  .event-date .month{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:4px;font-weight:400;}
+  .event-tag{display:inline-block;font-size:10px;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);letter-spacing:1px;margin-bottom:10px;text-transform:uppercase;}
+  .event-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:-0.3px;margin-bottom:10px;line-height:1.3;}
+  .event-desc{font-size:13px;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.7;margin-bottom:18px;}
+  .event-foot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;color:rgba(255,255,255,0.5);}
+  .event-foot .arrow{transition:transform .3s;}
+  .event:hover .event-foot .arrow{transform:translateX(4px);color:var(--blue-light);}
+
+  /* TIMELINE */
+  .timeline-section{background:linear-gradient(180deg,#000 0%,#0a0010 100%);position:relative;overflow:hidden;}
+  .timeline{position:relative;margin-top:60px;padding-left:40px;}
+  .timeline::before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,rgba(41,151,255,0.6),rgba(191,90,242,0.6),rgba(50,215,75,0.4));border-radius:1px;}
+  .tl-item{position:relative;padding:20px 0 36px 36px;}
+  .tl-item::before{content:"";position:absolute;left:-36px;top:24px;width:20px;height:20px;border-radius:50%;background:#000;border:3px solid var(--blue-light);box-shadow:0 0 16px rgba(41,151,255,0.6);}
+  .tl-item:nth-child(2)::before{border-color:var(--purple);box-shadow:0 0 16px rgba(191,90,242,0.6);}
+  .tl-item:nth-child(3)::before{border-color:var(--teal);box-shadow:0 0 16px rgba(50,215,75,0.5);}
+  .tl-item:nth-child(4)::before{border-color:var(--orange);box-shadow:0 0 16px rgba(255,159,10,0.5);}
+  .tl-item:nth-child(5)::before{border-color:var(--pink);box-shadow:0 0 16px rgba(255,55,95,0.5);}
+  .tl-date{font-family:'Playfair Display',serif;font-size:14px;color:var(--blue-light);letter-spacing:2px;margin-bottom:6px;}
+  .tl-title{font-family:'Playfair Display',serif;font-size:24px;color:#fff;font-weight:700;margin-bottom:10px;letter-spacing:-0.3px;}
+  .tl-desc{font-size:14px;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.7;max-width:640px;}
+
+  /* PARTICIPATE CTA */
+  .cta{padding:100px 24px;text-align:center;background:#000;}
+  .cta-card{max-width:760px;margin:0 auto;background:linear-gradient(135deg,rgba(41,151,255,0.06),rgba(191,90,242,0.06));border:1px solid rgba(41,151,255,0.18);border-radius:28px;padding:64px 40px;}
+  .cta h3{font-family:'Playfair Display',serif;font-size:36px;color:#fff;margin-bottom:16px;}
+  .cta p{font-size:16px;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.7;}
+
+  footer{background:#000;border-top:1px solid rgba(255,255,255,0.08);padding:40px 24px;text-align:center;}
+  footer p{font-size:12px;color:rgba(255,255,255,0.25);}
+
+  @media(max-width:880px){.featured-card{grid-template-columns:1fr;}.featured-visual{aspect-ratio:16/9;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index (1).html" class="nav-logo">Campus Intelligence</a>
+  <ul class="nav-links">
+    <li><a href="index (1).html#features">功能</a></li>
+    <li><a href="academics.html">学术活动</a></li>
+    <li><a href="mentors.html">导师团队</a></li>
+    <li><a href="privacy.html">隐私政策</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <span data-ci-auth></span>
+    <a href="index (1).html" class="nav-back">← 返回主页</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="badge-3d"><div class="badge-dot"></div>本月共有 12 场活动正在进行</div>
+  <div class="hero-eyebrow">Academic Events & Workshops</div>
+  <h1 class="hero-title">学术活动</h1>
+  <p class="hero-sub">从前沿讲座、跨学科工作坊到学术竞赛，<br>Campus Intelligence 联合学院持续为艺信学子提供高质量的学习与交流场景。</p>
+  <div class="filter-bar">
+    <button class="pill active" onclick="filterEvents('all',this)">全部</button>
+    <button class="pill" onclick="filterEvents('lecture',this)">学术讲座</button>
+    <button class="pill" onclick="filterEvents('workshop',this)">工作坊</button>
+    <button class="pill" onclick="filterEvents('competition',this)">学科竞赛</button>
+    <button class="pill" onclick="filterEvents('forum',this)">论坛沙龙</button>
+  </div>
+</section>
+
+<!-- FEATURED EVENT -->
+<section class="featured">
+  <div class="section-inner">
+    <div class="section-label">Featured · 重点活动</div>
+    <h2 class="section-title">本月聚焦<span> · AI × 设计周</span></h2>
+    <p class="section-desc">一场跨越人工智能、交互设计与艺术表达的校园盛会，由学院主办、Campus Intelligence 联合策划。</p>
+
+    <div class="featured-card">
+      <div class="featured-visual">
+        <div class="floating-cubes">
+          <div class="cube"><div class="face f"></div><div class="face b"></div><div class="face r"></div><div class="face l"></div><div class="face t"></div><div class="face bt"></div></div>
+          <div class="cube"><div class="face f"></div><div class="face b"></div><div class="face r"></div><div class="face l"></div><div class="face t"></div><div class="face bt"></div></div>
+          <div class="cube"><div class="face f"></div><div class="face b"></div><div class="face r"></div><div class="face l"></div><div class="face t"></div><div class="face bt"></div></div>
+          <div class="cube"><div class="face f"></div><div class="face b"></div><div class="face r"></div><div class="face l"></div><div class="face t"></div><div class="face bt"></div></div>
+        </div>
+        <div class="featured-emblem">AI<br>Week<span class="label">2026 · MAY</span></div>
+      </div>
+      <div class="featured-body">
+        <div class="featured-meta">
+          <span class="meta-chip live">● 报名进行中</span>
+          <span class="meta-chip">学院主办</span>
+          <span class="meta-chip" style="background:rgba(50,215,75,0.12);border-color:rgba(50,215,75,0.3);color:var(--teal);">免费参加</span>
+        </div>
+        <h3 class="featured-title">2026 AI × 设计周：从智能到表达</h3>
+        <p class="featured-desc">为期五天的跨学科盛会，邀请国内一线设计师、AI 研究者与高校教师共同参与。从工具论到方法论，重新审视技术与创造力的边界。</p>
+        <div class="featured-info">
+          <span><b>时间：</b>2026 年 5 月 27 日 — 5 月 31 日</span>
+          <span><b>地点：</b>艺术与信息工程学院 · 数字艺术中心</span>
+          <span><b>形式：</b>主题演讲 + 实战工作坊 + 作品展演</span>
+        </div>
+        <a class="btn btn-primary" href="#timeline">查看完整日程 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT GRID -->
+<section class="events" id="event-list">
+  <div class="section-inner">
+    <div class="section-label">Upcoming · 近期活动</div>
+    <h2 class="section-title">即将开始的<span>每一场相遇</span></h2>
+    <p class="section-desc">点击任意活动卡片可查看详情、了解嘉宾介绍并完成在线报名。</p>
+
+    <div class="event-grid">
+      <div class="event" data-cat="lecture" style="--g1:rgba(41,151,255,0.15);--g2:#2997ff;">
+        <div class="event-date" style="--g1:#2997ff;--g2:#0071e3;"><div class="day">06</div><div class="month">JUN</div></div>
+        <div class="event-tag">学术讲座</div>
+        <h3 class="event-title">大模型时代的交互设计范式</h3>
+        <p class="event-desc">主讲：清华大学美术学院 张教授。从 GPT 到多模态智能体，探索人机交互的新逻辑与设计语言。</p>
+        <div class="event-foot"><span>📍 阶梯报告厅 · 14:00</span><span class="arrow">了解详情 →</span></div>
+      </div>
+
+      <div class="event" data-cat="workshop" style="--g1:rgba(191,90,242,0.15);">
+        <div class="event-date" style="--g1:#bf5af2;--g2:#9533cc;"><div class="day">12</div><div class="month">JUN</div></div>
+        <div class="event-tag">实战工作坊</div>
+        <h3 class="event-title">用 AI 完成你的第一支动态海报</h3>
+        <p class="event-desc">从 prompt 编写到视觉迭代，全流程动手体验。每位参与者将带走一份完整的个人作品。</p>
+        <div class="event-foot"><span>📍 数字艺术中心 · 全天</span><span class="arrow">了解详情 →</span></div>
+      </div>
+
+      <div class="event" data-cat="competition" style="--g1:rgba(50,215,75,0.15);">
+        <div class="event-date" style="--g1:#32d74b;--g2:#1fa030;"><div class="day">20</div><div class="month">JUN</div></div>
+        <div class="event-tag">学科竞赛</div>
+        <h3 class="event-title">校园智能创意挑战赛 · 春季赛</h3>
+        <p class="event-desc">面向全校学生开放，以"AI 改变校园"为主题，4 人组队参赛。前三名获学院专项奖学金。</p>
+        <div class="event-foot"><span>📍 线上 + 线下答辩</span><span class="arrow">了解详情 →</span></div>
+      </div>
+
+      <div class="event" data-cat="forum" style="--g1:rgba(255,159,10,0.15);">
+        <div class="event-date" style="--g1:#ff9f0a;--g2:#cc7000;"><div class="day">25</div><div class="month">JUN</div></div>
+        <div class="event-tag">论坛沙龙</div>
+        <h3 class="event-title">毕业季：当艺术生遇上人工智能</h3>
+        <p class="event-desc">五位 25 届优秀毕业生分享他们如何把 AI 用进毕业作品，以及对未来职业方向的思考。</p>
+        <div class="event-foot"><span>📍 学院 A 座 · 19:00</span><span class="arrow">了解详情 →</span></div>
+      </div>
+
+      <div class="event" data-cat="lecture" style="--g1:rgba(255,55,95,0.15);">
+        <div class="event-date" style="--g1:#ff375f;--g2:#cc1240;"><div class="day">02</div><div class="month">JUL</div></div>
+        <div class="event-tag">学术讲座</div>
+        <h3 class="event-title">从代码到美学：生成艺术二十讲</h3>
+        <p class="event-desc">主讲：独立创作者 KIM。系统介绍 p5.js、TouchDesigner 等创意编码工具，零基础友好。</p>
+        <div class="event-foot"><span>📍 多功能厅 · 15:30</span><span class="arrow">了解详情 →</span></div>
+      </div>
+
+      <div class="event" data-cat="workshop" style="--g1:rgba(100,210,255,0.15);">
+        <div class="event-date" style="--g1:#64d2ff;--g2:#2997ff;"><div class="day">10</div><div class="month">JUL</div></div>
+        <div class="event-tag">实战工作坊</div>
+        <h3 class="event-title">学术写作实训：让 AI 成为你的副驾驶</h3>
+        <p class="event-desc">如何把 AI 用在论文综述、文献整理、引用规范上。结束后每人获得一份私人写作模板。</p>
+        <div class="event-foot"><span>📍 教学楼 305 · 09:00</span><span class="arrow">了解详情 →</span></div>
+      </div>
+
+      <div class="event" data-cat="competition" style="--g1:rgba(191,90,242,0.15);">
+        <div class="event-date" style="--g1:#9533cc;--g2:#bf5af2;"><div class="day">18</div><div class="month">JUL</div></div>
+        <div class="event-tag">学科竞赛</div>
+        <h3 class="event-title">全国大学生数字媒体艺术大赛 · 校选拔</h3>
+        <p class="event-desc">校内选拔通道，胜出作品由学院推荐至省赛。涵盖动画、互动装置、AIGC 三大方向。</p>
+        <div class="event-foot"><span>📍 作品提交至学院邮箱</span><span class="arrow">了解详情 →</span></div>
+      </div>
+
+      <div class="event" data-cat="forum" style="--g1:rgba(50,215,75,0.15);">
+        <div class="event-date" style="--g1:#32d74b;--g2:#1fa030;"><div class="day">26</div><div class="month">JUL</div></div>
+        <div class="event-tag">论坛沙龙</div>
+        <h3 class="event-title">深夜艺信 · 学生项目展示之夜</h3>
+        <p class="event-desc">每月最后一个周六，开放给在校生展示自己的"小项目"。茶水点心由学院提供。</p>
+        <div class="event-foot"><span>📍 院咖啡角 · 19:30</span><span class="arrow">了解详情 →</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section" id="timeline">
+  <div class="section-inner">
+    <div class="section-label">Timeline · AI × 设计周日程</div>
+    <h2 class="section-title">五天<span>从入门到作品</span></h2>
+    <p class="section-desc">每一天围绕一个主题展开，覆盖从概念到落地的完整链路。</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">DAY 1 · 5月27日 · 周二</div>
+        <div class="tl-title">开幕主题日：AI 的边界与可能</div>
+        <div class="tl-desc">院长致辞 + 三场主题演讲。从技术、艺术、教育三个角度共同解读"校园智能"在 2026 年的真正含义。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">DAY 2 · 5月28日 · 周三</div>
+        <div class="tl-title">工具实战日：让创意跑起来</div>
+        <div class="tl-desc">六场并行工作坊，包括 ChatGPT 工作流、Midjourney 视觉、Runway 视频、TouchDesigner 互动等。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">DAY 3 · 5月29日 · 周四</div>
+        <div class="tl-title">跨学科共创日：48 小时挑战</div>
+        <div class="tl-desc">混合组队，每队 4-6 人，必须包含至少一名艺术与一名信息方向同学。主题在开幕时公布。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">DAY 4 · 5月30日 · 周五</div>
+        <div class="tl-title">作品打磨日：导师 1V1</div>
+        <div class="tl-desc">王文杰老师与往届杰出校友坐镇评审席，每个项目获得一对一打磨与拍摄指导。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">DAY 5 · 5月31日 · 周六</div>
+        <div class="tl-title">闭幕展演日：作品之夜</div>
+        <div class="tl-desc">公开展演与颁奖。所有入围作品将在学院官方账号同步发布，优秀作品有机会进入下一阶段省赛通道。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-card">
+    <h3>没有合适的活动？告诉我们。</h3>
+    <p>Campus Intelligence 持续征集学生想看的主题与嘉宾。<br>有想法、想组织、想出题，都欢迎与我们联系。</p>
+    <div style="margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn btn-primary" href="mailto:campus-intelligence@dlpu.edu.cn">提议新的活动</a>
+      <a class="btn" style="background:transparent;color:var(--blue-light);border:1px solid rgba(41,151,255,0.4);" href="mentors.html">联系导师团队 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Copyright © 2026 大连工业大学艺术与信息工程学院 · Campus Intelligence. 保留所有权利。</p>
+</footer>
+
+<script>
+function filterEvents(cat,btn){
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.event').forEach(ev=>{
+    if(cat==='all'||ev.dataset.cat===cat){ev.style.display='block';}
+    else{ev.style.display='none';}
+  });
+}
+
+// 3D tilt on cards
+document.querySelectorAll('.event').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform=`translateY(-6px) rotateY(${x*8}deg) rotateX(${-y*8}deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{card.style.transform='';});
+});
+</script>
+<script src="ci-widget.js" defer></script>
+</body>
+</html>

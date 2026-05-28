@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>导师团队 · Campus Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--white:#f5f5f7;--blue:#0071e3;--blue-light:#2997ff;--purple:#bf5af2;--teal:#32d74b;--orange:#ff9f0a;--pink:#ff375f;--glass:rgba(255,255,255,0.06);--glass-border:rgba(255,255,255,0.12);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:#000;color:var(--white);font-family:'Noto Sans SC',-apple-system,sans-serif;overflow-x:hidden;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:999;height:52px;background:rgba(0,0,0,0.82);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 28px;}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;letter-spacing:-0.5px;background:linear-gradient(135deg,#fff 0%,#a0c4ff 60%,#bf5af2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:300;letter-spacing:0.3px;transition:color .2s;}
+  .nav-links a:hover{color:#fff;}
+  .nav-back{font-size:13px;color:var(--blue-light);text-decoration:none;}
+
+  /* HERO */
+  .hero{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 80px;position:relative;overflow:hidden;perspective:1200px;}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 50% at 50% 30%,rgba(41,151,255,0.18) 0%,rgba(191,90,242,0.10) 40%,transparent 70%);}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;animation:drift 14s ease-in-out infinite alternate;}
+  .orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(41,151,255,0.4) 0%,transparent 70%);top:-100px;left:-100px;}
+  .orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(191,90,242,0.35) 0%,transparent 70%);bottom:0;right:-50px;animation-delay:-5s;}
+  .orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(50,215,75,0.2) 0%,transparent 70%);top:40%;left:60%;animation-delay:-9s;}
+  @keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(30px,-40px) scale(1.08);}}
+  .grid-3d{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(41,151,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(41,151,255,0.06) 1px,transparent 1px);background-size:60px 60px;transform:perspective(800px) rotateX(60deg) translateY(50%) translateZ(-100px);transform-origin:center bottom;mask-image:linear-gradient(to top,#000 0%,transparent 80%);-webkit-mask-image:linear-gradient(to top,#000 0%,transparent 80%);}
+  .hero-eyebrow{font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--blue-light);font-weight:300;margin-bottom:20px;position:relative;z-index:1;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(52px,9vw,110px);font-weight:700;line-height:1.0;letter-spacing:-2px;background:linear-gradient(160deg,#ffffff 0%,#c8e0ff 45%,#bf5af2 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:relative;z-index:1;}
+  .hero-sub{font-size:clamp(16px,2.2vw,20px);font-weight:300;color:rgba(255,255,255,0.65);margin-top:24px;max-width:680px;line-height:1.7;position:relative;z-index:1;}
+
+  /* TIMELINE / ROLE STRUCTURE */
+  .roles{padding:100px 24px;background:linear-gradient(180deg,#000 0%,#070710 100%);}
+  .roles-inner{max-width:1200px;margin:0 auto;}
+  .section-label{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--blue-light);font-weight:400;margin-bottom:16px;text-align:center;}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);font-weight:700;line-height:1.1;letter-spacing:-1px;color:#fff;text-align:center;margin-bottom:14px;}
+  .section-title span{background:linear-gradient(120deg,#2997ff,#bf5af2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .section-desc{font-size:17px;font-weight:300;color:rgba(255,255,255,0.55);text-align:center;max-width:640px;margin:0 auto 70px;line-height:1.7;}
+
+  /* 3D CARD GRID */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;perspective:1500px;}
+  .member{position:relative;height:460px;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.2,.8,.2,1);cursor:pointer;}
+  .member:hover{transform:rotateY(180deg);}
+  .face{position:absolute;inset:0;border-radius:24px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:linear-gradient(160deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));backdrop-filter:blur(12px);}
+  .face.front{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:32px 28px;text-align:center;}
+  .face.back{transform:rotateY(180deg);padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;}
+  .face-glow{position:absolute;inset:-2px;border-radius:24px;padding:2px;background:linear-gradient(135deg,var(--g1,#2997ff),var(--g2,#bf5af2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;pointer-events:none;}
+  .member:hover .face-glow{opacity:.6;}
+  .avatar-3d{width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,var(--g1,#2997ff),var(--g2,#bf5af2));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:56px;font-weight:700;color:#fff;margin-bottom:24px;box-shadow:0 20px 60px rgba(41,151,255,0.25),inset 0 -20px 40px rgba(0,0,0,0.3),inset 0 4px 10px rgba(255,255,255,0.4);position:relative;animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .avatar-3d::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,0.5),transparent 50%);}
+  .role-tag{display:inline-block;padding:5px 14px;border-radius:999px;font-size:11px;letter-spacing:2px;text-transform:uppercase;background:rgba(41,151,255,0.12);color:var(--blue-light);border:1px solid rgba(41,151,255,0.25);margin-bottom:12px;}
+  .role-tag.lead{background:rgba(255,159,10,0.12);color:var(--orange);border-color:rgba(255,159,10,0.3);}
+  .role-tag.chief{background:rgba(191,90,242,0.12);color:var(--purple);border-color:rgba(191,90,242,0.3);}
+  .role-tag.assist{background:rgba(50,215,75,0.12);color:var(--teal);border-color:rgba(50,215,75,0.3);}
+  .member-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-bottom:6px;}
+  .member-en{font-size:13px;color:rgba(255,255,255,0.4);font-weight:300;letter-spacing:2px;}
+  .flip-hint{margin-top:18px;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:2px;}
+  .back-title{font-family:'Playfair Display',serif;font-size:20px;color:#fff;margin-bottom:14px;}
+  .back-quote{font-size:14px;color:rgba(255,255,255,0.7);font-weight:300;line-height:1.7;font-style:italic;border-left:2px solid var(--blue-light);padding-left:14px;margin-bottom:18px;}
+  .back-meta{font-size:12px;color:rgba(255,255,255,0.5);font-weight:300;line-height:1.8;}
+  .back-meta strong{color:#fff;font-weight:500;}
+  .back-skills{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+  .skill{font-size:10px;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);}
+
+  /* ORG STRUCTURE */
+  .org{padding:100px 24px;background:#000;}
+  .org-inner{max-width:1100px;margin:0 auto;}
+  .org-tree{margin-top:60px;display:flex;flex-direction:column;align-items:center;gap:0;position:relative;}
+  .org-node{background:linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 36px;text-align:center;backdrop-filter:blur(12px);position:relative;transform:translateZ(0);transition:transform .3s;}
+  .org-node:hover{transform:translateY(-4px);}
+  .org-node .role{font-size:11px;color:var(--blue-light);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+  .org-node .name{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:700;}
+  .org-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(41,151,255,0.5),rgba(191,90,242,0.3));}
+  .org-row{display:flex;gap:60px;flex-wrap:wrap;justify-content:center;}
+
+  /* CONTACT */
+  .contact{padding:100px 24px;background:linear-gradient(180deg,#000 0%,#0a0010 100%);text-align:center;}
+  .contact-card{max-width:720px;margin:60px auto 0;background:linear-gradient(135deg,rgba(41,151,255,0.06),rgba(191,90,242,0.06));border:1px solid rgba(191,90,242,0.15);border-radius:28px;padding:56px 40px;}
+  .contact-card h3{font-family:'Playfair Display',serif;font-size:28px;color:#fff;margin-bottom:14px;}
+  .contact-card p{font-size:15px;color:rgba(255,255,255,0.6);font-weight:300;line-height:1.8;}
+  .contact-actions{display:flex;gap:16px;justify-content:center;margin-top:30px;flex-wrap:wrap;}
+  .btn{padding:13px 30px;border-radius:999px;font-size:14px;text-decoration:none;transition:all .25s;cursor:pointer;border:none;font-family:inherit;}
+  .btn-primary{background:var(--blue);color:#fff;}
+  .btn-primary:hover{background:#0077ed;transform:scale(1.02);}
+  .btn-ghost{background:transparent;color:var(--blue-light);border:1px solid rgba(41,151,255,0.4);}
+  .btn-ghost:hover{background:rgba(41,151,255,0.08);}
+
+  footer{background:#000;border-top:1px solid rgba(255,255,255,0.08);padding:40px 24px;text-align:center;}
+  footer p{font-size:12px;color:rgba(255,255,255,0.25);}
+
+  @media(max-width:768px){.nav-links{display:none;}.member{height:420px;}.avatar-3d{width:130px;height:130px;font-size:46px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index (1).html" class="nav-logo">Campus Intelligence</a>
+  <ul class="nav-links">
+    <li><a href="index (1).html#features">功能</a></li>
+    <li><a href="academics.html">学术活动</a></li>
+    <li><a href="mentors.html">导师团队</a></li>
+    <li><a href="privacy.html">隐私政策</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <span data-ci-auth></span>
+    <a href="index (1).html" class="nav-back">← 返回主页</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-3d"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="hero-eyebrow">Mentors & Strategy Team</div>
+  <h1 class="hero-title">导师团队</h1>
+  <p class="hero-sub">Campus Intelligence 由一支跨越教学、策划与技术的协作团队共同打造。<br>每一位成员都为这个项目带来了独特的视角与坚持。</p>
+</section>
+
+<!-- ROLE CARDS -->
+<section class="roles">
+  <div class="roles-inner">
+    <div class="section-label">Core Members · 核心成员</div>
+    <h2 class="section-title">点击卡片<span> · 翻转探索</span></h2>
+    <p class="section-desc">每位成员都是这个项目不可或缺的一环。鼠标悬停查看 3D 翻转效果，了解他们的角色与故事。</p>
+
+    <div class="team-grid">
+
+      <!-- 王文杰 · 指导老师 -->
+      <div class="member" style="--g1:#ff9f0a;--g2:#ff375f;">
+        <div class="face front">
+          <div class="face-glow"></div>
+          <div class="avatar-3d">王</div>
+          <div class="role-tag lead">Academic Advisor</div>
+          <div class="member-name">王文杰</div>
+          <div class="member-en">WANG WENJIE · 指导老师</div>
+          <div class="flip-hint">HOVER TO FLIP →</div>
+        </div>
+        <div class="face back">
+          <div>
+            <div class="back-title">指导老师</div>
+            <div class="back-quote">"让科技成为校园里最温柔的连接，让每一个学生都能因 AI 而走得更远。"</div>
+            <div class="back-meta">
+              <strong>研究方向：</strong>智能教育系统、人机交互<br>
+              <strong>所在单位：</strong>大连工业大学艺术与信息工程学院<br>
+              <strong>项目角色：</strong>项目总负责人、学术方向把关、资源协调
+            </div>
+          </div>
+          <div class="back-skills">
+            <span class="skill">教育技术</span>
+            <span class="skill">AI 教学法</span>
+            <span class="skill">项目战略</span>
+            <span class="skill">学术指导</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 叶旭锋 · 主策划人 -->
+      <div class="member" style="--g1:#bf5af2;--g2:#2997ff;">
+        <div class="face front">
+          <div class="face-glow"></div>
+          <div class="avatar-3d">叶</div>
+          <div class="role-tag chief">Chief Planner</div>
+          <div class="member-name">叶旭锋</div>
+          <div class="member-en">YE XUFENG · 主策划人</div>
+          <div class="flip-hint">HOVER TO FLIP →</div>
+        </div>
+        <div class="face back">
+          <div>
+            <div class="back-title">主策划人</div>
+            <div class="back-quote">"好的产品不是被设计出来的，而是被使用出来的——我们要让 Campus Intelligence 真正长在校园里。"</div>
+            <div class="back-meta">
+              <strong>负责领域：</strong>整体方向、产品规划、视觉策略<br>
+              <strong>项目角色：</strong>核心策划人、用户体验主导、跨部门统筹<br>
+              <strong>关注重点：</strong>把抽象的"校园智能"落到具体的学生场景里
+            </div>
+          </div>
+          <div class="back-skills">
+            <span class="skill">产品策划</span>
+            <span class="skill">视觉设计</span>
+            <span class="skill">体验研究</span>
+            <span class="skill">跨界协作</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 谢军 · 辅助策划 -->
+      <div class="member" style="--g1:#32d74b;--g2:#2997ff;">
+        <div class="face front">
+          <div class="face-glow"></div>
+          <div class="avatar-3d">谢</div>
+          <div class="role-tag assist">Co-planner</div>
+          <div class="member-name">谢军</div>
+          <div class="member-en">XIE JUN · 辅助策划</div>
+          <div class="flip-hint">HOVER TO FLIP →</div>
+        </div>
+        <div class="face back">
+          <div>
+            <div class="back-title">辅助策划</div>
+            <div class="back-quote">"细节决定品质。每一次对话、每一个动效，都是 Campus Intelligence 与学生的真实约定。"</div>
+            <div class="back-meta">
+              <strong>负责领域：</strong>功能拆分、内容编排、流程优化<br>
+              <strong>项目角色：</strong>辅助策划、需求落地、用户测试组织<br>
+              <strong>擅长方向：</strong>把复杂功能简化为学生能直觉使用的步骤
+            </div>
+          </div>
+          <div class="back-skills">
+            <span class="skill">需求分析</span>
+            <span class="skill">交互设计</span>
+            <span class="skill">用户测试</span>
+            <span class="skill">内容策略</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 金琨皓 · 辅助策划 -->
+      <div class="member" style="--g1:#2997ff;--g2:#64d2ff;">
+        <div class="face front">
+          <div class="face-glow"></div>
+          <div class="avatar-3d">金</div>
+          <div class="role-tag assist">Co-planner</div>
+          <div class="member-name">金琨皓</div>
+          <div class="member-en">JIN KUNHAO · 辅助策划</div>
+          <div class="flip-hint">HOVER TO FLIP →</div>
+        </div>
+        <div class="face back">
+          <div>
+            <div class="back-title">辅助策划</div>
+            <div class="back-quote">"我们做的不是一个工具，而是一个会一直陪着你成长的校园伙伴。"</div>
+            <div class="back-meta">
+              <strong>负责领域：</strong>技术对接、原型搭建、性能与可用性<br>
+              <strong>项目角色：</strong>辅助策划、技术统筹、上线节奏把控<br>
+              <strong>关注重点：</strong>让每一次智能对话都流畅、稳定、值得信赖
+            </div>
+          </div>
+          <div class="back-skills">
+            <span class="skill">前端实现</span>
+            <span class="skill">原型开发</span>
+            <span class="skill">系统集成</span>
+            <span class="skill">性能优化</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ORG STRUCTURE -->
+<section class="org">
+  <div class="org-inner">
+    <div class="section-label">Organization · 团队结构</div>
+    <h2 class="section-title">协作的<span>结构与节奏</span></h2>
+    <p class="section-desc">从战略制定到落地执行，团队以扁平、高效的方式协作。</p>
+
+    <div class="org-tree">
+      <div class="org-node" style="border-color:rgba(255,159,10,0.4);box-shadow:0 0 30px rgba(255,159,10,0.15);">
+        <div class="role">Academic Advisor · 指导老师</div>
+        <div class="name">王文杰</div>
+      </div>
+      <div class="org-line"></div>
+      <div class="org-node" style="border-color:rgba(191,90,242,0.4);box-shadow:0 0 30px rgba(191,90,242,0.15);">
+        <div class="role">Chief Planner · 主策划人</div>
+        <div class="name">叶旭锋</div>
+      </div>
+      <div class="org-line"></div>
+      <div class="org-row">
+        <div class="org-node" style="border-color:rgba(50,215,75,0.4);">
+          <div class="role">Co-planner · 辅助策划</div>
+          <div class="name">谢军</div>
+        </div>
+        <div class="org-node" style="border-color:rgba(41,151,255,0.4);">
+          <div class="role">Co-planner · 辅助策划</div>
+          <div class="name">金琨皓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="section-label">Get in Touch · 联系我们</div>
+  <h2 class="section-title">想加入<span>这支团队？</span></h2>
+  <div class="contact-card">
+    <h3>面向工大艺信学子招募</h3>
+    <p>Campus Intelligence 持续欢迎有想法的同学加入——无论你擅长设计、开发、内容还是策划，都可以通过下面的方式与我们建立联系。</p>
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="mailto:campus-intelligence@dlpu.edu.cn">写邮件给我们</a>
+      <a class="btn btn-ghost" href="academics.html">查看学术活动 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Copyright © 2026 大连工业大学艺术与信息工程学院 · Campus Intelligence. 保留所有权利。</p>
+</footer>
+<script src="ci-widget.js" defer></script>
+</body>
+</html>
